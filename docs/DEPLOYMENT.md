@@ -1,50 +1,50 @@
-# 📖 Guía de Despliegue - Azure Monitor Demo
+# 📖 Deployment Guide - Azure Monitor Demo
 
-Esta guía proporciona instrucciones detalladas para desplegar el entorno de demostración de Azure Monitor y Application Insights.
+This guide provides detailed instructions for deploying the Azure Monitor and Application Insights demo environment.
 
-## 📋 Prerrequisitos
+## 📋 Prerequisites
 
-### Software Requerido
-- **Azure CLI** 2.40.0 o superior
-- **PowerShell** 5.1 o superior (Windows) / PowerShell Core 7.0+ (Cross-platform)
-- **Git** (para clonar el repositorio)
+### Required Software
+- **Azure CLI** 2.40.0 or higher
+- **PowerShell** 5.1 or higher (Windows) / PowerShell Core 7.0+ (Cross-platform)
+- **Git** (to clone the repository)
 
-### Configuración de Azure
-- Suscripción de Azure activa
-- Permisos de contribuidor en la suscripción
-- Azure CLI autenticado (`az login`)
+### Azure Configuration
+- Active Azure subscription
+- Contributor permissions on the subscription
+- Azure CLI authenticated (`az login`)
 
-### Verificación de Prerrequisitos
+### Prerequisites Verification
 ```powershell
-# Verificar Azure CLI
+# Verify Azure CLI
 az --version
 
-# Verificar autenticación
+# Verify authentication
 az account show
 
-# Verificar PowerShell
+# Verify PowerShell
 $PSVersionTable.PSVersion
 ```
 
-## 🚀 Pasos de Despliegue
+## 🚀 Deployment Steps
 
-### 1. Preparación del Entorno
+### 1. Environment Preparation
 
-#### Clonar el Repositorio
+#### Clone Repository
 ```bash
-git clone https://github.com/tu-usuario/azure-monitor-demo.git
+git clone https://github.com/your-username/azure-monitor-demo.git
 cd azure-monitor-demo
 ```
 
-#### Configurar Variables (Opcional)
-Editar `infra/main.parameters.json` para personalizar:
-- **Región de Azure**: `location`
-- **Prefijo de recursos**: `resourcePrefix`
-- **Configuración de SKUs**: Para optimizar costos
+#### Configure Variables (Optional)
+Edit `infra/main.parameters.json` to customize:
+- **Azure Region**: `location`
+- **Resource Prefix**: `resourcePrefix`
+- **SKU Configuration**: To optimize costs
 
-### 2. Configuración de Parámetros
+### 2. Parameters Configuration
 
-#### Archivo main.parameters.json
+#### main.parameters.json File
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",

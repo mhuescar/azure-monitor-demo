@@ -1,5 +1,5 @@
 # Demo Final - Azure Monitor & Application Insights
-# Script para demostrar todas las capacidades del entorno de monitoreo
+# Script to demonstrate all monitoring environment capabilities
 
 Write-Host "🚀 DEMO: Azure Monitor & Application Insights" -ForegroundColor Cyan
 Write-Host "================================================" -ForegroundColor Cyan
@@ -8,90 +8,90 @@ Write-Host ""
 $baseUrl = "https://app-bwkinh757hlog.azurewebsites.net"
 $resourceGroup = "demo-monitor-rg"
 
-# 1. Verificar estado de la aplicación
-Write-Host "1. 📊 Verificando estado de la aplicación..." -ForegroundColor Yellow
+# 1. Check application status
+Write-Host "1. 📊 Checking application status..." -ForegroundColor Yellow
 try {
     $health = Invoke-RestMethod -Uri "$baseUrl/health" -Method Get -TimeoutSec 10
-    Write-Host "   ✅ Aplicación: SALUDABLE" -ForegroundColor Green
-    Write-Host "   ⏱️  Uptime: $([math]::Round($health.uptime, 2)) segundos" -ForegroundColor Green
-    Write-Host "   💾 Memoria: $([math]::Round($health.memory.heapUsed / 1MB, 2)) MB" -ForegroundColor Green
+    Write-Host "   ✅ Application: HEALTHY" -ForegroundColor Green
+    Write-Host "   ⏱️  Uptime: $([math]::Round($health.uptime, 2)) seconds" -ForegroundColor Green
+    Write-Host "   💾 Memory: $([math]::Round($health.memory.heapUsed / 1MB, 2)) MB" -ForegroundColor Green
 } catch {
-    Write-Host "   ❌ Error verificando salud: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "   ❌ Error checking health: $($_.Exception.Message)" -ForegroundColor Red
     exit 1
 }
 
 Write-Host ""
 
-# 2. Probar API de productos
-Write-Host "2. 🛍️  Probando API de productos..." -ForegroundColor Yellow
+# 2. Test products API
+Write-Host "2. 🛍️  Testing products API..." -ForegroundColor Yellow
 try {
     $products = Invoke-RestMethod -Uri "$baseUrl/api/products" -Method Get -TimeoutSec 10
-    Write-Host "   ✅ API funcionando: $($products.count) productos disponibles" -ForegroundColor Green
-    Write-Host "   📦 Productos: $($products.data | ForEach-Object { $_.name } | Join-String -Separator ', ')" -ForegroundColor Green
+    Write-Host "   ✅ API working: $($products.count) products available" -ForegroundColor Green
+    Write-Host "   📦 Products: $($products.data | ForEach-Object { $_.name } | Join-String -Separator ', ')" -ForegroundColor Green
 } catch {
-    Write-Host "   ❌ Error en API: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "   ❌ API error: $($_.Exception.Message)" -ForegroundColor Red
 }
 
 Write-Host ""
 
-# 3. Generar telemetría de errores
-Write-Host "3. 🔥 Generando errores para telemetría..." -ForegroundColor Yellow
+# 3. Generate error telemetry
+Write-Host "3. 🔥 Generating errors for telemetry..." -ForegroundColor Yellow
 $errorCount = 0
 for ($i = 1; $i -le 3; $i++) {
     try {
         Invoke-RestMethod -Uri "$baseUrl/error" -Method Get -TimeoutSec 5 | Out-Null
     } catch {
         $errorCount++
-        Write-Host "   ✅ Error $i generado correctamente (HTTP 500)" -ForegroundColor Green
+        Write-Host "   ✅ Error $i generated correctly (HTTP 500)" -ForegroundColor Green
     }
 }
-Write-Host "   📊 Total errores generados: $errorCount" -ForegroundColor Green
+Write-Host "   📊 Total errors generated: $errorCount" -ForegroundColor Green
 
 Write-Host ""
 
-# 4. Prueba de carga
-Write-Host "4. ⚡ Ejecutando prueba de carga..." -ForegroundColor Yellow
+# 4. Load test
+Write-Host "4. ⚡ Running load test..." -ForegroundColor Yellow
 try {
     $loadResult = Invoke-RestMethod -Uri "$baseUrl/load?iterations=10000" -Method Get -TimeoutSec 20
-    Write-Host "   ✅ Prueba de carga completada" -ForegroundColor Green
-    Write-Host "   ⏱️  Duración: $($loadResult.duration) ms" -ForegroundColor Green
-    Write-Host "   🔢 Iteraciones: $($loadResult.iterations)" -ForegroundColor Green
+    Write-Host "   ✅ Load test completed" -ForegroundColor Green
+    Write-Host "   ⏱️  Duration: $($loadResult.duration) ms" -ForegroundColor Green
+    Write-Host "   🔢 Iterations: $($loadResult.iterations)" -ForegroundColor Green
 } catch {
-    Write-Host "   ❌ Error en prueba de carga: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "   ❌ Load test error: $($_.Exception.Message)" -ForegroundColor Red
 }
 
 Write-Host ""
 
-# 5. Prueba de memoria
-Write-Host "5. 💾 Ejecutando prueba de memoria..." -ForegroundColor Yellow
+# 5. Memory test
+Write-Host "5. 💾 Running memory test..." -ForegroundColor Yellow
 try {
     $memResult = Invoke-RestMethod -Uri "$baseUrl/memory?size=2000000" -Method Get -TimeoutSec 15
-    Write-Host "   ✅ Prueba de memoria completada" -ForegroundColor Green
-    Write-Host "   📈 Memoria allocada: $([math]::Round($memResult.allocatedSize / 1MB, 2)) MB" -ForegroundColor Green
-    Write-Host "   📊 Diferencia heap: $([math]::Round($memResult.memoryDifference.heapUsed / 1MB, 2)) MB" -ForegroundColor Green
+    Write-Host "   ✅ Memory test completed" -ForegroundColor Green
+    Write-Host "   📈 Memory allocated: $([math]::Round($memResult.allocatedSize / 1MB, 2)) MB" -ForegroundColor Green
+    Write-Host "   📊 Heap difference: $([math]::Round($memResult.memoryDifference.heapUsed / 1MB, 2)) MB" -ForegroundColor Green
 } catch {
-    Write-Host "   ❌ Error en prueba de memoria: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "   ❌ Memory test error: $($_.Exception.Message)" -ForegroundColor Red
 }
 
 Write-Host ""
 
-# 6. Prueba de dependencias
-Write-Host "6. 🔗 Ejecutando prueba de dependencias..." -ForegroundColor Yellow
+# 6. Dependencies test
+Write-Host "6. 🔗 Running dependencies test..." -ForegroundColor Yellow
 try {
     $depResult = Invoke-RestMethod -Uri "$baseUrl/dependencies" -Method Get -TimeoutSec 15
-    Write-Host "   ✅ Prueba de dependencias completada" -ForegroundColor Green
-    Write-Host "   🎯 Dependencias simuladas:" -ForegroundColor Green
+    Write-Host "   ✅ Dependencies test completed" -ForegroundColor Green
+    Write-Host "   🎯 Simulated dependencies:" -ForegroundColor Green
     foreach ($dep in $depResult.dependencies) {
         Write-Host "      - $($dep.name): $([math]::Round($dep.duration, 2)) ms" -ForegroundColor Cyan
     }
 } catch {
-    Write-Host "   ❌ Error en prueba de dependencias: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Host "   ❌ Dependencies test error: $($_.Exception.Message)" -ForegroundColor Red
 }
 
 Write-Host ""
 
-# 7. Generar tráfico sostenido
-Write-Host "7. 🌊 Generando tráfico sostenido..." -ForegroundColor Yellow
+# 7. Generate sustained traffic
+Write-Host "7. 🌊 Generating sustained traffic..." -ForegroundColor Yellow
 $successCount = 0
 $totalRequests = 10
 for ($i = 1; $i -le $totalRequests; $i++) {
@@ -99,47 +99,47 @@ for ($i = 1; $i -le $totalRequests; $i++) {
         Invoke-RestMethod -Uri "$baseUrl/health" -Method Get -TimeoutSec 5 | Out-Null
         $successCount++
         if ($i % 3 -eq 0) {
-            Write-Host "   📊 $i/$totalRequests requests completados..." -ForegroundColor Cyan
+            Write-Host "   📊 $i/$totalRequests requests completed..." -ForegroundColor Cyan
         }
     } catch {
-        Write-Host "   ⚠️  Request $i falló" -ForegroundColor Yellow
+        Write-Host "   ⚠️  Request $i failed" -ForegroundColor Yellow
     }
     Start-Sleep -Milliseconds 500
 }
-Write-Host "   ✅ Tráfico completado: $successCount/$totalRequests requests exitosos" -ForegroundColor Green
+Write-Host "   ✅ Traffic completed: $successCount/$totalRequests successful requests" -ForegroundColor Green
 
 Write-Host ""
 
-# 8. Información del entorno
-Write-Host "8. 📋 Información del entorno de monitoreo:" -ForegroundColor Yellow
-Write-Host "   🌐 URL de la aplicación: $baseUrl" -ForegroundColor Cyan
+# 8. Environment information
+Write-Host "8. 📋 Monitoring environment information:" -ForegroundColor Yellow
+Write-Host "   🌐 Application URL: $baseUrl" -ForegroundColor Cyan
 Write-Host "   📊 Application Insights: insights-bwkinh757hlog" -ForegroundColor Cyan
 Write-Host "   📁 Resource Group: $resourceGroup" -ForegroundColor Cyan
-Write-Host "   📍 Región: North Europe" -ForegroundColor Cyan
+Write-Host "   📍 Region: North Europe" -ForegroundColor Cyan
 
 Write-Host ""
 
-# 9. Enlaces útiles
-Write-Host "9. 🔗 Enlaces útiles para la demo:" -ForegroundColor Yellow
-Write-Host "   🌐 Aplicación Web: $baseUrl" -ForegroundColor Cyan
+# 9. Useful links
+Write-Host "9. 🔗 Useful links for demo:" -ForegroundColor Yellow
+Write-Host "   🌐 Web Application: $baseUrl" -ForegroundColor Cyan
 Write-Host "   📊 Health Check: $baseUrl/health" -ForegroundColor Cyan
-Write-Host "   🛍️  API Productos: $baseUrl/api/products" -ForegroundColor Cyan
-Write-Host "   🔥 Generar Error: $baseUrl/error" -ForegroundColor Cyan
-Write-Host "   ⚡ Prueba de Carga: $baseUrl/load?iterations=5000" -ForegroundColor Cyan
-Write-Host "   💾 Prueba de Memoria: $baseUrl/memory?size=1000000" -ForegroundColor Cyan
-Write-Host "   🔗 Prueba de Dependencias: $baseUrl/dependencies" -ForegroundColor Cyan
+Write-Host "   🛍️  Products API: $baseUrl/api/products" -ForegroundColor Cyan
+Write-Host "   🔥 Generate Error: $baseUrl/error" -ForegroundColor Cyan
+Write-Host "   ⚡ Load Test: $baseUrl/load?iterations=5000" -ForegroundColor Cyan
+Write-Host "   💾 Memory Test: $baseUrl/memory?size=1000000" -ForegroundColor Cyan
+Write-Host "   🔗 Dependencies Test: $baseUrl/dependencies" -ForegroundColor Cyan
 
 Write-Host ""
-Write-Host "✅ DEMO COMPLETADO EXITOSAMENTE" -ForegroundColor Green
+Write-Host "✅ DEMO COMPLETED SUCCESSFULLY" -ForegroundColor Green
 Write-Host "================================================" -ForegroundColor Green
 Write-Host ""
-Write-Host "📌 Próximos pasos para la presentación:" -ForegroundColor White
-Write-Host "   1. Abrir Azure Portal -> Application Insights 'insights-bwkinh757hlog'" -ForegroundColor White
-Write-Host "   2. Revisar métricas en tiempo real (Live Metrics)" -ForegroundColor White
-Write-Host "   3. Verificar errores capturados (Failures)" -ForegroundColor White
-Write-Host "   4. Revisar performance (Performance)" -ForegroundColor White
-Write-Host "   5. Verificar alertas configuradas (Alerts)" -ForegroundColor White
-Write-Host "   6. Mostrar logs y queries en Log Analytics" -ForegroundColor White
+Write-Host "📌 Next steps for presentation:" -ForegroundColor White
+Write-Host "   1. Open Azure Portal -> Application Insights 'insights-bwkinh757hlog'" -ForegroundColor White
+Write-Host "   2. Review real-time metrics (Live Metrics)" -ForegroundColor White
+Write-Host "   3. Check captured errors (Failures)" -ForegroundColor White
+Write-Host "   4. Review performance (Performance)" -ForegroundColor White
+Write-Host "   5. Check configured alerts (Alerts)" -ForegroundColor White
+Write-Host "   6. Show logs and queries in Log Analytics" -ForegroundColor White
 
 Write-Host ""
-Write-Host "🎯 La aplicación está generando telemetría completa para la demo!" -ForegroundColor Green
+Write-Host "🎯 The application is generating complete telemetry for the demo!" -ForegroundColor Green

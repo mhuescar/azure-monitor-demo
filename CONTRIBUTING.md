@@ -1,79 +1,79 @@
-# 🤝 Guía de Contribución
+# 🤝 Contributing Guide
 
-¡Gracias por tu interés en contribuir al proyecto Azure Monitor Demo!
+Thank you for your interest in contributing to the Azure Monitor Demo project!
 
-## 🚀 Cómo Contribuir
+## 🚀 How to Contribute
 
-### 1. Fork y Clone
+### 1. Fork and Clone
 ```bash
 git fork https://github.com/your-repo/azure-monitor-demo
 git clone https://github.com/your-username/azure-monitor-demo
 cd azure-monitor-demo
 ```
 
-### 2. Crear una Rama
+### 2. Create a Branch
 ```bash
-git checkout -b feature/nueva-funcionalidad
+git checkout -b feature/new-functionality
 ```
 
-### 3. Hacer Cambios
-- Mantén el código limpio y documentado
-- Sigue las convenciones de naming existentes
-- Actualiza documentación si es necesario
+### 3. Make Changes
+- Keep code clean and documented
+- Follow existing naming conventions
+- Update documentation if necessary
 
-### 4. Testear
+### 4. Test
 ```powershell
-# Ejecutar tests locales
+# Run local tests
 .\scripts\demo-final.ps1
 ```
 
-### 5. Commit y Push
+### 5. Commit and Push
 ```bash
 git add .
-git commit -m "feat: descripción de la nueva funcionalidad"
-git push origin feature/nueva-funcionalidad
+git commit -m "feat: description of new functionality"
+git push origin feature/new-functionality
 ```
 
-### 6. Crear Pull Request
-- Describe los cambios realizados
-- Incluye screenshots si aplica
-- Referencia issues relacionados
+### 6. Create Pull Request
+- Describe the changes made
+- Include screenshots if applicable
+- Reference related issues
 
-## 📋 Checklist para Pull Requests
+## 📋 Pull Request Checklist
 
-- [ ] Código testeado localmente
-- [ ] Documentación actualizada
-- [ ] Sin información sensible (passwords, keys, etc.)
-- [ ] Commit messages claros
-- [ ] No hay archivos temporales o logs
+- [ ] Code tested locally
+- [ ] Documentation updated
+- [ ] No sensitive information (passwords, keys, etc.)
+- [ ] Clear commit messages
+- [ ] No temporary files or logs
 
-## 🏷️ Convenciones
+## 🏷️ Conventions
 
 ### Commit Messages
-- `feat:` nueva funcionalidad
-- `fix:` corrección de bugs
-- `docs:` cambios en documentación
-- `refactor:` refactoring de código
-- `test:` agregar o modificar tests
+- `feat:` new functionality
+- `fix:` bug fixes
+- `docs:` documentation changes
+- `refactor:` code refactoring
+- `test:` add or modify tests
 
-### Código
-- Usar nombres descriptivos para variables y funciones
-- Comentar código complejo
-- Mantener funciones pequeñas y enfocadas
+### Code
+- Use descriptive names for variables and functions
+- Comment complex code
+- Keep functions small and focused
 
-## 🛠️ Configuración de Desarrollo
+## 🛠️ Development Setup
 
-### Prerrequisitos
+### Prerequisites
 - Azure CLI
 - PowerShell 5.1+
 - Git
-- Editor de código (VS Code recomendado)
+- Code editor (VS Code recommended)
 
-### Configuración Inicial
+### Initial Setup
 ```bash
-# Instalar extensiones recomendadas para VS Code
+# Install recommended VS Code extensions
 code --install-extension ms-vscode.azure-tools
 code --install-extension ms-vscode.powershell
 ```
 
-¡Gracias por contribuir! 🎉
+Thank you for contributing! 🎉

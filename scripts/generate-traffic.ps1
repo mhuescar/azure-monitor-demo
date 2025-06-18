@@ -1,13 +1,13 @@
-# Script para generar tráfico de prueba hacia la aplicación
+# Script to generate test traffic to the application
 param(
     [Parameter(Mandatory=$false)]
     [string]$AppUrl = "https://app-bwkinh757hlog.azurewebsites.net"
 )
 
-Write-Host "🚀 Generando tráfico hacia: $AppUrl" -ForegroundColor Cyan
+Write-Host "🚀 Generating traffic to: $AppUrl" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
-# Endpoints disponibles una vez que la app esté funcionando
+# Available endpoints once the app is running
 $endpoints = @(
     @{Name="Home/Swagger"; Path="/"},
     @{Name="Health Check"; Path="/api/health"},
@@ -17,15 +17,15 @@ $endpoints = @(
     @{Name="Memory Test"; Path="/api/memory-test"}
 )
 
-Write-Host "`n🔍 Verificando si la aplicación está disponible..." -ForegroundColor Yellow
+Write-Host "`n🔍 Checking if application is available..." -ForegroundColor Yellow
 
 try {
     $response = Invoke-WebRequest -Uri $AppUrl -Method GET -TimeoutSec 10
     if ($response.StatusCode -eq 200) {
-        Write-Host "✅ Aplicación disponible!" -ForegroundColor Green
+        Write-Host "✅ Application available!" -ForegroundColor Green
         
-        # Generar tráfico de prueba
-        Write-Host "`n🔄 Generando tráfico de prueba..." -ForegroundColor Yellow
+        # Generate test traffic
+        Write-Host "`n🔄 Generating test traffic..." -ForegroundColor Yellow
         
         for ($i = 1; $i -le 30; $i++) {
             $endpoint = $endpoints | Get-Random

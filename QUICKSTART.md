@@ -1,71 +1,71 @@
 # 📋 Azure Monitor Demo - Quick Start Guide
 
-Este documento te ayudará a levantar el entorno de demostración en menos de 15 minutos.
+This document will help you set up the demo environment in less than 15 minutes.
 
-## ⚡ Setup Express (TL;DR)
+## ⚡ Express Setup (TL;DR)
 
 ```powershell
-# 1. Clonar y configurar
-git clone https://github.com/tu-usuario/azure-monitor-demo.git
+# 1. Clone and configure
+git clone https://github.com/your-username/azure-monitor-demo.git
 cd azure-monitor-demo
 
-# 2. Configurar Azure CLI
+# 2. Configure Azure CLI
 az login
-az account set --subscription "tu-subscription-id"
+az account set --subscription "your-subscription-id"
 
-# 3. Desplegar todo
+# 3. Deploy everything
 .\scripts\deploy.ps1
 
-# 4. Verificar funcionamiento
+# 4. Verify operation
 .\scripts\demo-final.ps1
 
-# 5. Abrir demo
-# URL: Se mostrará al final del deployment
+# 5. Open demo
+# URL: Will be shown at the end of deployment
 # Azure Portal: portal.azure.com > Resource Groups > demo-monitor-rg
 ```
 
-## 🎯 Para la Demo
+## 🎯 For the Demo
 
-### URLs Importantes
-- **App Web**: `https://app-[unique-id].azurewebsites.net`
+### Important URLs
+- **Web App**: `https://app-[unique-id].azurewebsites.net`
 - **Health Check**: `https://app-[unique-id].azurewebsites.net/health`
-- **API Productos**: `https://app-[unique-id].azurewebsites.net/api/products`
-- **Generar Error**: `https://app-[unique-id].azurewebsites.net/error`
+- **Products API**: `https://app-[unique-id].azurewebsites.net/api/products`
+- **Generate Error**: `https://app-[unique-id].azurewebsites.net/error`
 
 ### Azure Portal
-1. **Application Insights** → Live Metrics (impresionante en vivo)
-2. **Application Map** → Muestra dependencias visuales
-3. **Performance** → Análisis de latencia
-4. **Failures** → Tracking de errores
-5. **Alerts** → 3 alertas preconfiguradas
+1. **Application Insights** → Live Metrics (impressive live)
+2. **Application Map** → Shows visual dependencies
+3. **Performance** → Latency analysis
+4. **Failures** → Error tracking
+5. **Alerts** → 3 preconfigured alerts
 
-### Script de Tráfico
+### Traffic Script
 ```powershell
-# Generar tráfico durante la demo
+# Generate traffic during demo
 .\scripts\generate-traffic.ps1
 ```
 
-## 🚨 Si Algo Sale Mal
+## 🚨 If Something Goes Wrong
 
 ```powershell
-# Reiniciar aplicación
+# Restart application
 az webapp restart --name app-[unique-id] --resource-group demo-monitor-rg
 
-# Ver logs
+# View logs
 az webapp log tail --name app-[unique-id] --resource-group demo-monitor-rg
 
-# Limpiar todo
+# Clean everything
 az group delete --name demo-monitor-rg --yes --no-wait
 ```
 
-## 💰 Costos
-- **Total estimado**: ~$0.76/día
-- **Para 1 demo de 1 hora**: ~$0.03
+## 💰 Costs
+- **Estimated total**: ~$0.76/day
+- **For 1-hour demo**: ~$0.03
 
-## 📞 Soporte
-- 📖 [Documentación completa](docs/)
-- 🐛 [Reportar issues](../../issues)
-- 💬 [Discusiones](../../discussions)
+## 📞 Support
+- 📖 [Complete documentation](docs/)
+- 🐛 [Report issues](../../issues)
+- 💬 [Discussions](../../discussions)
 
 ---
-🎉 **¡En 15 minutos tendrás una demo impresionante de Azure Monitor!**
+🎉 **In 15 minutes you'll have an impressive Azure Monitor demo!**

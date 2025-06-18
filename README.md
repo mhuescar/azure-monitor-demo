@@ -1,18 +1,18 @@
 # 🚀 Azure Monitor & Application Insights Demo
 
-Un entorno completo de demostración para Azure Monitor y Application Insights que incluye infraestructura como código, aplicaciones con telemetría integrada, y scripts de automatización.
+A complete demonstration environment for Azure Monitor and Application Insights that includes infrastructure as code, applications with integrated telemetry, and automation scripts.
 
-## 📋 Descripción del Proyecto
+## 📋 Project Description
 
-Este proyecto demuestra las capacidades completas de Azure Monitor y Application Insights a través de:
+This project demonstrates the complete capabilities of Azure Monitor and Application Insights through:
 
-- **Infraestructura como Código (ARM Templates)**: Despliegue automatizado de todos los recursos Azure
-- **Aplicación Web con Telemetría**: Node.js + Express con Application Insights integrado  
-- **Generación Automática de Carga**: Azure Functions para mantener tráfico constante
-- **Alertas y Monitoreo**: Configuración completa de alertas proactivas
-- **Scripts de Demostración**: Automatización para presentaciones en vivo
+- **Infrastructure as Code (ARM Templates)**: Automated deployment of all Azure resources
+- **Web Application with Telemetry**: Node.js + Express with integrated Application Insights  
+- **Automatic Load Generation**: Azure Functions to maintain constant traffic
+- **Alerts and Monitoring**: Complete proactive alerts configuration
+- **Demo Scripts**: Automation for live presentations
 
-## 🏗️ Arquitectura
+## 🏗️ Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -28,206 +28,206 @@ Este proyecto demuestra las capacidades completas de Azure Monitor y Application
 ```
 
 
-## ✨ Características
+## ✨ Features
 
-### 🎯 Aplicación de Demostración
-- **Dashboard Interactivo**: Interfaz moderna con métricas en tiempo real
-- **API RESTful**: Endpoints para generar diferentes tipos de telemetría
-- **Simulación de Errores**: Generación controlada de excepciones
-- **Pruebas de Carga**: Endpoints para testing de performance
-- **Health Checks**: Monitoreo de estado automático
+### 🎯 Demo Application
+- **Interactive Dashboard**: Modern interface with real-time metrics
+- **RESTful API**: Endpoints to generate different types of telemetry
+- **Error Simulation**: Controlled exception generation
+- **Load Testing**: Performance testing endpoints
+- **Health Checks**: Automatic health monitoring
 
-### 📊 Telemetría Completa
-- **Request Tracking**: Todas las HTTP requests con timing
-- **Exception Tracking**: Captura y análisis de errores
-- **Dependency Tracking**: Monitoreo de llamadas externas
-- **Custom Metrics**: Métricas de negocio específicas
-- **Custom Events**: Eventos de aplicación personalizados
+### 📊 Complete Telemetry
+- **Request Tracking**: All HTTP requests with timing
+- **Exception Tracking**: Error capture and analysis
+- **Dependency Tracking**: External calls monitoring
+- **Custom Metrics**: Specific business metrics
+- **Custom Events**: Custom application events
 
-### 🚨 Alertas Configuradas
-- **High Response Time**: Latencia > 2000ms
-- **Error Rate**: Tasa de errores > 10%
+### 🚨 Configured Alerts
+- **High Response Time**: Latency > 2000ms
+- **Error Rate**: Error rate > 10%
 - **High CPU Usage**: CPU > 80%
 
-## 🚀 Inicio Rápido
+## 🚀 Quick Start
 
-### Prerrequisitos
-- Azure CLI instalado y configurado
-- PowerShell 5.1 o superior
-- Suscripción de Azure activa
+### Prerequisites
+- Azure CLI installed and configured
+- PowerShell 5.1 or higher
+- Active Azure subscription
 
-### 1. Clonar el Repositorio
+### 1. Clone Repository
 ```bash
 git clone <repository-url>
 cd azure-monitor-demo
 ```
 
-### 2. Configurar Variables
+### 2. Configure Variables
 ```powershell
-# Editar los parámetros en infra/main.parameters.json
+# Edit parameters in infra/main.parameters.json
 $resourceGroup = "demo-monitor-rg"
 $location = "North Europe"
 ```
 
-### 3. Desplegar Infraestructura
+### 3. Deploy Infrastructure
 ```powershell
-# Ejecutar el script de despliegue
+# Run deployment script
 .\scripts\deploy.ps1
 ```
 
-### 4. Verificar Funcionamiento
+### 4. Verify Operation
 ```powershell
-# Ejecutar pruebas del entorno
+# Run environment tests
 .\scripts\demo-final.ps1
 ```
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 azure-monitor-demo/
-├── 📁 infra/                     # Infraestructura como Código
-│   ├── main.json                 # ARM Template principal
-│   └── main.parameters.json      # Parámetros de configuración
-├── 📁 src/                       # Código fuente
-│   ├── 📁 webapp-simple/         # Aplicación Node.js
-│   │   ├── server.js             # Servidor Express con AI
-│   │   ├── package.json          # Dependencias Node.js
-│   │   └── web.config            # Configuración IIS
-│   ├── 📁 web/                   # Aplicación .NET (alternativa)
-│   └── 📁 loadtest/              # Azure Functions para carga
-├── 📁 scripts/                   # Scripts de utilidad
-│   ├── deploy.ps1               # Script de despliegue
-│   ├── demo-final.ps1           # Script de demostración
-│   └── generate-traffic.ps1     # Generador de tráfico
-└── 📁 docs/                     # Documentación
-    ├── DEMO-GUIDE.md            # Guía de demostración
-    └── DEPLOYMENT.md            # Guía de despliegue
+├── 📁 infra/                     # Infrastructure as Code
+│   ├── main.json                 # Main ARM Template
+│   └── main.parameters.json      # Configuration parameters
+├── 📁 src/                       # Source code
+│   ├── 📁 webapp-simple/         # Node.js Application
+│   │   ├── server.js             # Express server with AI
+│   │   ├── package.json          # Node.js dependencies
+│   │   └── web.config            # IIS configuration
+│   ├── 📁 web/                   # .NET Application (alternative)
+│   └── 📁 loadtest/              # Azure Functions for load
+├── 📁 scripts/                   # Utility scripts
+│   ├── deploy.ps1               # Deployment script
+│   ├── demo-final.ps1           # Demo script
+│   └── generate-traffic.ps1     # Traffic generator
+└── 📁 docs/                     # Documentation
+    ├── DEMO-GUIDE.md            # Demo guide
+    └── DEPLOYMENT.md            # Deployment guide
 ```
 
-## 🎯 Endpoints de la Aplicación
+## 🎯 Application Endpoints
 
 ### API Endpoints
-- **GET /** - Dashboard principal con UI interactiva
-- **GET /health** - Health check con métricas del sistema
-- **GET /api/products** - API de productos con simulación de DB
-- **GET /error** - Generación controlada de errores
-- **GET /load?iterations=N** - Prueba de carga CPU
-- **GET /memory?size=N** - Prueba de consumo de memoria
-- **GET /dependencies** - Simulación de dependencias externas
+- **GET /** - Main dashboard with interactive UI
+- **GET /health** - Health check with system metrics
+- **GET /api/products** - Products API with DB simulation
+- **GET /error** - Controlled error generation
+- **GET /load?iterations=N** - CPU load test
+- **GET /memory?size=N** - Memory consumption test
+- **GET /dependencies** - External dependencies simulation
 
-### Telemetría Generada
-Cada endpoint genera telemetría específica:
-- Request timing y response codes
-- Custom events para análisis de negocio
-- Custom metrics para KPIs
-- Exception tracking con contexto completo
-- Dependency tracking simulado
+### Generated Telemetry
+Each endpoint generates specific telemetry:
+- Request timing and response codes
+- Custom events for business analysis
+- Custom metrics for KPIs
+- Exception tracking with full context
+- Simulated dependency tracking
 
-## 📊 Monitoreo y Alertas
+## 📊 Monitoring and Alerts
 
-### Métricas Automáticas
-- **HTTP Requests**: Conteo y timing de todas las requests
-- **Response Times**: Latencia de aplicación
-- **Error Rates**: Porcentaje de errores 4xx/5xx
-- **CPU/Memory**: Uso de recursos del servidor
-- **Dependencies**: Performance de llamadas externas
+### Automatic Metrics
+- **HTTP Requests**: Count and timing of all requests
+- **Response Times**: Application latency
+- **Error Rates**: 4xx/5xx error percentage
+- **CPU/Memory**: Server resource usage
+- **Dependencies**: External calls performance
 
-### Métricas Personalizadas
-- `Health_Check_Duration`: Tiempo de health checks
-- `Products_API_Duration`: Latencia de API de productos
-- `Load_Test_Duration`: Duración de pruebas de carga
-- `Memory_Usage_Delta`: Cambios en uso de memoria
-- `Error_Count`: Conteo de errores por tipo
+### Custom Metrics
+- `Health_Check_Duration`: Health checks timing
+- `Products_API_Duration`: Products API latency
+- `Load_Test_Duration`: Load tests duration
+- `Memory_Usage_Delta`: Memory usage changes
+- `Error_Count`: Error count by type
 
-### Eventos Personalizados
-- `HomePage_Visited`: Visitas al dashboard
-- `Products_API_Called`: Llamadas a la API
-- `Error_Generated`: Errores simulados
-- `Load_Test_Started`: Inicio de pruebas de carga
-- `Application_Started`: Arranque de la aplicación
+### Custom Events
+- `HomePage_Visited`: Dashboard visits
+- `Products_API_Called`: API calls
+- `Error_Generated`: Simulated errors
+- `Load_Test_Started`: Load test start
+- `Application_Started`: Application startup
 
-## 🎪 Guía de Demostración
+## 🎪 Demo Guide
 
-### Preparación (5 minutos)
-1. Verificar que todos los recursos estén desplegados
-2. Ejecutar `.\demo-final.ps1` para generar tráfico inicial
-3. Abrir Azure Portal en Application Insights
+### Preparation (5 minutes)
+1. Verify all resources are deployed
+2. Run `.\demo-final.ps1` to generate initial traffic
+3. Open Azure Portal in Application Insights
 
-### Demo en Vivo (15 minutos)
-1. **Mostrar la aplicación funcionando** (3 min)
-   - Navegar por el dashboard
-   - Probar diferentes endpoints
-   - Generar errores y carga
+### Live Demo (15 minutes)
+1. **Show application working** (3 min)
+   - Navigate through dashboard
+   - Test different endpoints
+   - Generate errors and load
 
-2. **Application Insights en tiempo real** (5 min)
+2. **Real-time Application Insights** (5 min)
    - Live Metrics Stream
    - Application Map
    - Performance metrics
 
-3. **Análisis de telemetría** (4 min)
+3. **Telemetry analysis** (4 min)
    - Exception tracking
-   - Custom events y metrics
+   - Custom events and metrics
    - Log Analytics queries
 
-4. **Alertas y monitoreo** (3 min)
-   - Mostrar alertas configuradas
-   - Explicar thresholds y acciones
+4. **Alerts and monitoring** (3 min)
+   - Show configured alerts
+   - Explain thresholds and actions
 
-## 💰 Estimación de Costos
+## 💰 Cost Estimation
 
-Para un entorno de demostración (24 horas):
-- **App Service (B1)**: ~$0.50/día
-- **Application Insights**: ~$0.10/día  
-- **SQL Database (Basic)**: ~$0.15/día
-- **Storage Account**: ~$0.01/día
-- **Total**: ~$0.76/día
+For a demo environment (24 hours):
+- **App Service (B1)**: ~$0.50/day
+- **Application Insights**: ~$0.10/day  
+- **SQL Database (Basic)**: ~$0.15/day
+- **Storage Account**: ~$0.01/day
+- **Total**: ~$0.76/day
 
-## 🧹 Limpieza de Recursos
+## 🧹 Resource Cleanup
 
-Para eliminar todos los recursos después de la demo:
+To delete all resources after demo:
 ```powershell
 az group delete --name demo-monitor-rg --yes --no-wait
 ```
 
-## 🔧 Solución de Problemas
+## 🔧 Troubleshooting
 
-### Aplicación no responde
+### Application not responding
 ```powershell
-# Verificar estado
+# Check status
 az webapp show --name <app-name> --resource-group <rg> --query "state"
 
-# Reiniciar si es necesario
+# Restart if needed
 az webapp restart --name <app-name> --resource-group <rg>
 ```
 
-### Sin datos en Application Insights
+### No data in Application Insights
 ```powershell
-# Generar tráfico de prueba
+# Generate test traffic
 .\scripts\demo-final.ps1
 
-# Verificar connection string
+# Verify connection string
 az webapp config appsettings list --name <app-name> --resource-group <rg>
 ```
 
-## 📖 Documentación Adicional
+## 📖 Additional Documentation
 
-- [Guía de Demostración](docs/DEMO-GUIDE.md)
-- [Guía de Despliegue](docs/DEPLOYMENT.md)
-- [Resumen Final](docs/DEMO-READY-FINAL.md)
-- [Guía de Contribución](CONTRIBUTING.md)
+- [Demo Guide](docs/DEMO-GUIDE.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Final Summary](docs/DEMO-READY-FINAL.md)
+- [Contributing Guide](CONTRIBUTING.md)
 
-## 🤝 Contribuciones
+## 🤝 Contributing
 
-Las contribuciones son bienvenidas. Por favor:
-1. Fork el repositorio
-2. Crear una rama para tu feature
-3. Commit tus cambios
-4. Push a la rama
-5. Crear un Pull Request
+Contributions are welcome. Please:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
+This project is under the MIT License. See [LICENSE](LICENSE) for more details.
 
 ## 🏷️ Tags
 
@@ -235,4 +235,4 @@ Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detal
 
 ---
 
-**Construido con ❤️ para demostrar las capacidades de Azure Monitor**
+**Built with ❤️ to demonstrate Azure Monitor capabilities**
